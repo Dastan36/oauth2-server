@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="/javascripts/jquery.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>尊敬的：<%=name%></p>
+      <p><span style="color:cornflowerblue">movie</span> 将使用此账号的权限</p>
+      <!-- <input type="button" id="resolve" value="授权"> -->
+      <form method="POST" action="/userAuthorize">
+        <input type="hidden" name="response_type" value=<%=response_type%>>
+        <input type="hidden" name="client_id" value=<%=client_id%>/>
+        <input type="hidden" name="redirect_url" value=<%=redirect_url%>>
+        <input type="hidden" name="scope" value=<%=scope%>>
+        <input type="hidden" name="state" value=<%=state%>>
+        <input type="submit" id="resolve" value="授权">
+        <input type="button" id="reject" value="拒绝">
+      </form>
+    </div>
+  </body>
+</html>
+<script>
+  $(function(){
+    
+  })
+  function getQueryVariable(variable)
+{
+       var query = window.location.search.substring(1);
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return(false);
+}
+</script>
